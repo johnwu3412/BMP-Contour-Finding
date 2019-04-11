@@ -1,0 +1,16 @@
+#Makefile contour.out
+contour.out: BMPstructfns.o contour_trace.o ctrace_helper.o
+	gcc -o contour.out BMPstructfns.o contour_trace.o ctrace_helper.o
+
+BMPstructfns.o: BMPsrc/BMPstructfns.c /BMPsrc/BMPstructfns.h /BMPsrc/BMPstructures.h
+	gcc -c BMPsrc/BMPstructfns.c BMPsrc/BMPstructfns.h BMPsrc/BMPstructures.h
+
+contour_trace.o: contour_trace.c
+	gcc -c contour_trace.c
+
+ctrace_helper.o: ctrace_helper.c ctrace_helper.h
+	gcc -c ctrace_helper.c ctrace_helper.h
+
+clean:
+	rm *.out
+	rm *.o
